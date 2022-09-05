@@ -1,24 +1,24 @@
 const container = document.querySelector('.container')
-const fila1 = document.querySelector('.fila1');
-const fila2 = document.querySelector('.fila2');
-const fila3 = document.querySelector('.fila3');
-const fila4 = document.querySelector('.fila4');
-const fila5 = document.querySelector('.fila5');
 const text = document.getElementById('text');
 
-
-container.childNodes.forEach((element)=> {
+container.childNodes.forEach((element) => {
     element.childNodes.forEach(elemento => {
         elemento.addEventListener('click', () => {
             switch (elemento.value) {
                 case 'CE':
                     text.value = "";
                     break;
+
                 case 'C':
                     text.value = "";
                     break;
-                case '<||':
-                    text.value;
+                case 'D':
+                    let textoEliminado = text.value.split('')
+                    text.value = ''
+                    textoEliminado.pop()
+                    textoEliminado.map(elementico => {
+                        text.value += elementico
+                    })
                     break;
                 case 'X':
                     text.value += '*'
@@ -27,14 +27,18 @@ container.childNodes.forEach((element)=> {
                     try {
                         text.value = eval(text.value)
                     } catch (E) {
-                        alert('accion invalida')
+                        alert('accion invalida' + E)
                     }
                     break;
-            
+                case '+/-':
+                    text.value += '-'
+                    break;
+
                 default:
                     text.value += elemento.value
             }
         }
         )
+    })
 })
-})
+
