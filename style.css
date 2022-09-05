@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 300px;
+    height: 500px;
+}
+
+.container .fila1, .fila2, .fila3, .fila4, .fila5{
+    text-align: center;
+    background-color: #999;
+    padding:  4px;
+    
+}
+
+.text{
+    background: red;
+    text-align: center;
+}
+
+input[type="text"]{
+    width: 200px;
+    padding: 10px 20px; 
+    margin: 30px;
+    
+}
+input[type="button"]{
+    background-color: dodgerblue;
+    padding: 15px 25px;
+    width: 30px;
+    margin: 4px 4px;
+    
+}
