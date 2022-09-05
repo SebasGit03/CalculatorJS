@@ -11,7 +11,7 @@
     height: 500px;
 }
 
-.container .fila1, .fila2, .fila3, .fila4, .fila5{
+.container .fila0, .fila1, .fila2, .fila3, .fila4, .fila5{
     text-align: center;
     background-color: #999;
     padding:  4px;
