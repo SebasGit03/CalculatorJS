@@ -1,10 +1,11 @@
 const container = document.querySelector('.container')
 const text = document.getElementById('text');
+const History = document.querySelector('.history');
 
 class Operaciones {
 
-    constructor(valor){
-       this.valor = valor;
+    constructor(valor) {
+        this.valor = valor;
     }
 
     eliminarUltimoDigito() {
@@ -25,7 +26,7 @@ class Operaciones {
     }
     elevarAlCuadrado() {
         let laPotencia = parseFloat(this.valor.value * this.valor.value)
-        if(isNaN(laPotencia)){
+        if (isNaN(laPotencia)) {
             this.valor.value = ''
             return alert('invalid Acction')
         }
@@ -40,7 +41,12 @@ class Operaciones {
         return alert('invalid Acction')
     }
 
+    historial(){
+        
+    }
+
 }
+
 container.childNodes.forEach((element) => {
     element.childNodes.forEach(elemento => {
         elemento.addEventListener('click', () => {
@@ -48,6 +54,7 @@ container.childNodes.forEach((element) => {
             switch (elemento.value) {
                 case 'CE':
                     text.value = "";
+                    sessionStorage.clear()
                     break;
 
                 case 'C':
@@ -61,7 +68,12 @@ container.childNodes.forEach((element) => {
                     break;
                 case '=':
                     try {
-                        text.value = eval(text.value)
+                        if (text.value.indexOf('^') === -1) {
+                            operacion.historial()
+                            text.value = eval(text.value)
+                        }else{
+                            operacion.elevarUnNumeroAotro()
+                        }
                     } catch (E) {
                         alert('accion invalida' + E)
                     }
@@ -77,9 +89,6 @@ container.childNodes.forEach((element) => {
                 case 'x2':
                     operacion.elevarAlCuadrado()
                     break;
-
-                case '^':
-                    operacion.elevarUnNumeroAotro()
 
                 default:
                     text.value += elemento.value
